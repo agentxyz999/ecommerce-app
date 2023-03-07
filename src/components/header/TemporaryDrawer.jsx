@@ -1,7 +1,6 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
-import Button from "@mui/material/Button";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
@@ -14,7 +13,7 @@ import PeopleIcon from "@mui/icons-material/People";
 import CheckroomIcon from "@mui/icons-material/Checkroom";
 
 export default function TemporaryDrawer() {
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
     top: false,
     left: false,
     bottom: false,
@@ -73,8 +72,19 @@ export default function TemporaryDrawer() {
   return (
     <div>
       <React.Fragment>
-        <MenuOpenIcon onClick={toggleDrawer("right", true)} color="primary" />
-
+        <MenuOpenIcon
+          onClick={toggleDrawer("right", true)}
+          color="primary"
+          sx={{
+            display: {
+              xl: "none",
+              lg: "none",
+              md: "none",
+              sm: "none",
+              xs: "block",
+            },
+          }}
+        />
         <Drawer
           anchor={"right"}
           open={state["right"]}
