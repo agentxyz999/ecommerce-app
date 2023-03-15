@@ -19,6 +19,7 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
 import IconButton from "@mui/material/IconButton";
+import { grey } from "@mui/material/colors";
 
 const Header = () => {
   return (
@@ -94,7 +95,7 @@ const Header = () => {
               sx={{
                 borderTopLeftRadius: "30px",
                 borderBottomLeftRadius: "30px",
-                backgroundColor: "#d3d3d3",
+                backgroundColor: grey[200],
                 height: 40,
               }}
               value=""

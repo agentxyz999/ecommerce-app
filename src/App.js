@@ -1,14 +1,12 @@
 import React from "react";
-import Header from "./components/header/Header";
-import Navigation from "./components/Navigation";
-import Hero from "./components/Hero";
+import Appbar from "./components/appbar/Appbar";
+import Hero from "./components/hero/Hero";
 
 const App = () => {
   return (
     <>
-      <Header />
-      {/* <Navigation />
-      <Hero /> */}
+      <Appbar />
+      <Hero />
     </>
   );
 };
