@@ -86,6 +86,8 @@ const Header = () => {
                 sm: "block",
                 xs: "none",
               },
+              alignItems: "center",
+              justifyContent: "center",
             }}
           >
             <Select
@@ -111,7 +113,7 @@ const Header = () => {
           </FormControl>
           {/* Search Field */}
           <FormControl
-            sx={{ width: { xl: 550, lg: 500, md: 320, sm: 380, xs: 550 } }}
+            sx={{ width: { xl: 550, lg: 500, md: 330, sm: 380, xs: 550 } }}
             variant="standard"
           >
             <OutlinedInput
@@ -134,11 +136,8 @@ const Header = () => {
                   xs: "30px",
                 },
                 height: 40,
-                "&:hover": {
-                  borderColor: "yellow",
-                },
+                minWidth: 0,
               }}
-              fullWidth
               id="outlined-adornment-weight"
               endAdornment={
                 <InputAdornment position="end">
@@ -157,12 +156,12 @@ const Header = () => {
         <Grid
           container
           item
-          gap={1}
           xl={2}
           lg={2}
           md={2}
           sm={6}
           xs={10}
+          gap={{ xl: 2, lg: 2, md: 0, sm: 2, xs: 0 }}
           alignItems="center"
           justifyContent="flex-end"
         >
