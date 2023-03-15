@@ -12,11 +12,13 @@ import {
   Badge,
   Typography,
 } from "@mui/material";
+// icons
 import FitbitTwoToneIcon from "@mui/icons-material/FitbitTwoTone";
 import SearchIcon from "@mui/icons-material/Search";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
+import IconButton from "@mui/material/IconButton";
 
 const Header = () => {
   return (
@@ -132,26 +134,30 @@ const Header = () => {
                   xs: "30px",
                 },
                 height: 40,
+                "&:hover": {
+                  borderColor: "yellow",
+                },
               }}
               fullWidth
               id="outlined-adornment-weight"
               endAdornment={
                 <InputAdornment position="end">
-                  <SearchIcon
-                    color="primary"
-                    cursor="pointer"
-                    onClick={() => console.log("clicked")}
-                  />
+                  <IconButton>
+                    <SearchIcon
+                      color="primary"
+                      onClick={() => console.log("clicked")}
+                    />
+                  </IconButton>
                 </InputAdornment>
               }
             />
           </FormControl>
         </Grid>
-        {/* Icons */}
+        {/* Icons(wishlist, cart, account icon) */}
         <Grid
           container
           item
-          gap={3}
+          gap={1}
           xl={2}
           lg={2}
           md={2}
@@ -160,13 +166,40 @@ const Header = () => {
           alignItems="center"
           justifyContent="flex-end"
         >
-          <Badge badgeContent={10} color="primary">
-            <FavoriteBorderOutlinedIcon color="action" />
-          </Badge>
-          <Badge badgeContent={2} color="primary">
-            <ShoppingCartOutlinedIcon color="action" />
-          </Badge>
-          <Person2OutlinedIcon color="action" />
+          <IconButton>
+            <Badge badgeContent={10} color="secondary">
+              <FavoriteBorderOutlinedIcon
+                color="action"
+                sx={{
+                  "&:hover": {
+                    color: "primary.main",
+                  },
+                }}
+              />
+            </Badge>
+          </IconButton>
+          <IconButton>
+            <Badge badgeContent={2} color="secondary">
+              <ShoppingCartOutlinedIcon
+                color="action"
+                sx={{
+                  "&:hover": {
+                    color: "primary.main",
+                  },
+                }}
+              />
+            </Badge>
+          </IconButton>
+          <IconButton>
+            <Person2OutlinedIcon
+              color="action"
+              sx={{
+                "&:hover": {
+                  color: "primary.main",
+                },
+              }}
+            />
+          </IconButton>
           <TemporaryDrawer />
         </Grid>
       </Grid>

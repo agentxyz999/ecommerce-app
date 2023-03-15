@@ -11,6 +11,7 @@ import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import CancelIcon from "@mui/icons-material/Cancel";
 import PeopleIcon from "@mui/icons-material/People";
 import CheckroomIcon from "@mui/icons-material/Checkroom";
+import IconButton from "@mui/material/IconButton";
 
 export default function TemporaryDrawer() {
   const [state, setState] = useState({
@@ -38,9 +39,9 @@ export default function TemporaryDrawer() {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <CancelIcon
-        sx={{ padding: "20px", color: "#d0312d", fontSize: "40px" }}
-      />
+      <IconButton>
+        <CancelIcon sx={{ color: "#d0312d", fontSize: "40px" }} />
+      </IconButton>
       <List>
         {["All Categories", "Men", "Women", "Kids"].map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -72,19 +73,24 @@ export default function TemporaryDrawer() {
   return (
     <div>
       <React.Fragment>
-        <MenuOpenIcon
-          onClick={toggleDrawer("right", true)}
-          color="primary"
-          sx={{
-            display: {
-              xl: "none",
-              lg: "none",
-              md: "none",
-              sm: "none",
-              xs: "block",
-            },
-          }}
-        />
+        <IconButton>
+          <MenuOpenIcon
+            onClick={toggleDrawer("right", true)}
+            color="action"
+            sx={{
+              display: {
+                xl: "none",
+                lg: "none",
+                md: "none",
+                sm: "none",
+                xs: "block",
+              },
+              "&:hover": {
+                color: "primary.main",
+              },
+            }}
+          />
+        </IconButton>
         <Drawer
           anchor={"right"}
           open={state["right"]}
