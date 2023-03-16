@@ -12,6 +12,8 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import PeopleIcon from "@mui/icons-material/People";
 import CheckroomIcon from "@mui/icons-material/Checkroom";
 import IconButton from "@mui/material/IconButton";
+import SearchIcon from "@mui/icons-material/Search";
+import { FormControl, InputAdornment, OutlinedInput } from "@mui/material";
 
 export default function TemporaryDrawer() {
   const [state, setState] = useState({
@@ -36,12 +38,34 @@ export default function TemporaryDrawer() {
     <Box
       sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
     >
-      <IconButton>
+      <IconButton
+        onClick={toggleDrawer(anchor, false)}
+        onKeyDown={toggleDrawer(anchor, false)}
+      >
+        {/*this onClick function will close the drawer */}
         <CancelIcon sx={{ color: "#d0312d", fontSize: "40px" }} />
       </IconButton>
+      <List>
+        <FormControl variant="standard">
+          <OutlinedInput
+            placeholder="Search for items..."
+            sx={{
+              height: 40,
+              minWidth: 0,
+            }}
+            id="outlined-adornment-weight"
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton onClick={() => console.log("clicked")}>
+                  <SearchIcon color="primary" />
+                </IconButton>
+              </InputAdornment>
+            }
+          />
+        </FormControl>
+      </List>
+      <Divider />
       <List>
         {["All Categories", "Men", "Women", "Kids"].map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -81,7 +105,7 @@ export default function TemporaryDrawer() {
                 xl: "none",
                 lg: "none",
                 md: "none",
-                sm: "none",
+                sm: "block",
                 xs: "block",
               },
               "&:hover": {

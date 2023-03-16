@@ -73,7 +73,13 @@ const Header = () => {
           xs={12}
           alignItems="center"
           justifyContent="center"
-          order={{ xl: 0, lg: 0, md: 0, sm: 3, xs: 3 }}
+          display={{
+            xl: "block",
+            lg: "block",
+            md: "none",
+            sm: "none",
+            xs: "none",
+          }}
         >
           {/* Dropdown Menu */}
           <FormControl
