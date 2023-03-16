@@ -11,7 +11,6 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
     minHeight: 20,
   },
   [theme.breakpoints.down("md")]: {
-    backgroundColor: "red",
     display: "none",
   },
 }));

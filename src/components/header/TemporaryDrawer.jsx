@@ -14,6 +14,7 @@ import CheckroomIcon from "@mui/icons-material/Checkroom";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import { FormControl, InputAdornment, OutlinedInput } from "@mui/material";
+import { grey } from "@mui/material/colors";
 
 export default function TemporaryDrawer() {
   const [state, setState] = useState({
@@ -30,7 +31,6 @@ export default function TemporaryDrawer() {
     ) {
       return;
     }
-
     setState({ ...state, [anchor]: open });
   };
 
@@ -99,7 +99,6 @@ export default function TemporaryDrawer() {
       <React.Fragment>
         <IconButton onClick={toggleDrawer("right", true)}>
           <MenuOpenIcon
-            color="action"
             sx={{
               display: {
                 xl: "none",
@@ -108,8 +107,15 @@ export default function TemporaryDrawer() {
                 sm: "block",
                 xs: "block",
               },
+              color: {
+                xl: grey[700],
+                lg: grey[700],
+                md: grey[700],
+                sm: grey[50],
+                xs: grey[50],
+              },
               "&:hover": {
-                color: "primary.main",
+                color: "secondary.main",
               },
             }}
           />

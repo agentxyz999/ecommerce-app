@@ -43,13 +43,30 @@ const Header = () => {
           alignItems="center"
           gap={1}
         >
-          <FitbitTwoToneIcon sx={{ fontSize: "60px" }} color="primary" />
+          <FitbitTwoToneIcon
+            sx={{
+              fontSize: "60px",
+              color: {
+                xl: "primary.main",
+                lg: "primary.main",
+                md: "primary.main",
+                sm: "",
+                xs: "",
+              },
+            }}
+          />
           <Typography
             variant="h6"
             component="p"
             sx={{
               fontFamily: "Climate Crisis, sans-serif",
-              color: "#444",
+              color: {
+                xl: grey[800],
+                lg: grey[800],
+                md: grey[800],
+                sm: "",
+                xs: "",
+              },
               display: {
                 xl: "block",
                 lg: "block",
@@ -73,12 +90,14 @@ const Header = () => {
           xs={12}
           alignItems="center"
           justifyContent="center"
-          display={{
-            xl: "block",
-            lg: "block",
-            md: "none",
-            sm: "none",
-            xs: "none",
+          sx={{
+            display: {
+              xl: "flex",
+              lg: "flex",
+              md: "flex",
+              sm: "none",
+              xs: "none",
+            },
           }}
         >
           {/* Dropdown Menu */}
@@ -171,10 +190,22 @@ const Header = () => {
           <IconButton>
             <Badge badgeContent={10} color="secondary">
               <FavoriteBorderOutlinedIcon
-                color="action"
                 sx={{
                   "&:hover": {
-                    color: "primary.main",
+                    color: {
+                      xl: "primary.main",
+                      lg: "primary.main",
+                      md: "primary.main",
+                      sm: "secondary.main",
+                      xs: "secondary.main",
+                    },
+                  },
+                  color: {
+                    xl: grey[700],
+                    lg: grey[700],
+                    md: grey[700],
+                    sm: grey[50],
+                    xs: grey[50],
                   },
                 }}
               />
@@ -183,10 +214,22 @@ const Header = () => {
           <IconButton>
             <Badge badgeContent={2} color="secondary">
               <ShoppingCartOutlinedIcon
-                color="action"
                 sx={{
                   "&:hover": {
-                    color: "primary.main",
+                    color: {
+                      xl: "primary.main",
+                      lg: "primary.main",
+                      md: "primary.main",
+                      sm: "secondary.main",
+                      xs: "secondary.main",
+                    },
+                  },
+                  color: {
+                    xl: grey[700],
+                    lg: grey[700],
+                    md: grey[700],
+                    sm: grey[50],
+                    xs: grey[50],
                   },
                 }}
               />
@@ -194,10 +237,22 @@ const Header = () => {
           </IconButton>
           <IconButton>
             <Person2OutlinedIcon
-              color="action"
               sx={{
                 "&:hover": {
-                  color: "primary.main",
+                  color: {
+                    xl: "primary.main",
+                    lg: "primary.main",
+                    md: "primary.main",
+                    sm: "secondary.main",
+                    xs: "secondary.main",
+                  },
+                },
+                color: {
+                  xl: grey[700],
+                  lg: grey[700],
+                  md: grey[700],
+                  sm: grey[50],
+                  xs: grey[50],
                 },
               }}
             />
