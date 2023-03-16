@@ -5,6 +5,7 @@ import Hero from "./components/hero/Hero";
 const App = () => {
   return (
     <>
+      {/* todo: fix the alignment of Toolbar icons with the navbar Hotline component */}
       <Appbar />
       <Hero />
     </>

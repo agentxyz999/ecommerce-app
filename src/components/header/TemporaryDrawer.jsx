@@ -73,9 +73,8 @@ export default function TemporaryDrawer() {
   return (
     <div>
       <React.Fragment>
-        <IconButton>
+        <IconButton onClick={toggleDrawer("right", true)}>
           <MenuOpenIcon
-            onClick={toggleDrawer("right", true)}
             color="action"
             sx={{
               display: {

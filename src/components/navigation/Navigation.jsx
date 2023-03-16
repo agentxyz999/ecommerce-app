@@ -10,6 +10,10 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   "@media all": {
     minHeight: 20,
   },
+  [theme.breakpoints.down("md")]: {
+    backgroundColor: "red",
+    display: "none",
+  },
 }));
 
 const Item = styled("div")(({ theme }) => ({
@@ -35,8 +39,8 @@ const Navigation = () => {
           <Typography>Browse Categories</Typography>
         </Item>
         <Item>
-          {navItems.map((items) => {
-            return <Typography>{items}</Typography>;
+          {navItems.map((items, index) => {
+            return <Typography key={index}>{items}</Typography>;
           })}
         </Item>
         <Item>

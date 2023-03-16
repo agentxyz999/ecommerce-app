@@ -30,7 +30,6 @@ const Header = () => {
         justifyContent="space-between"
         alignItems="center"
         textAlign="center"
-        padding={1}
       >
         <Grid
           container
@@ -142,11 +141,8 @@ const Header = () => {
               id="outlined-adornment-weight"
               endAdornment={
                 <InputAdornment position="end">
-                  <IconButton>
-                    <SearchIcon
-                      color="primary"
-                      onClick={() => console.log("clicked")}
-                    />
+                  <IconButton onClick={() => console.log("clicked")}>
+                    <SearchIcon color="primary" />
                   </IconButton>
                 </InputAdornment>
               }
