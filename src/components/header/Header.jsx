@@ -1,20 +1,18 @@
 import React from "react";
-import TemporaryDrawer from "./TemporaryDrawer";
+import AppBarDrawer from "./AppBarDrawer";
+import Search from "../reusables/Search";
 import {
   Container,
   Grid,
   FormControl,
-  InputAdornment,
   Select,
   MenuItem,
   ListSubheader,
-  OutlinedInput,
   Badge,
   Typography,
 } from "@mui/material";
 // icons
 import FitbitTwoToneIcon from "@mui/icons-material/FitbitTwoTone";
-import SearchIcon from "@mui/icons-material/Search";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
@@ -136,43 +134,8 @@ const Header = () => {
               <MenuItem value={4}>Option 4</MenuItem>
             </Select>
           </FormControl>
-          {/* Search Field */}
-          <FormControl
-            sx={{ width: { xl: 550, lg: 500, md: 330, sm: 380, xs: 550 } }}
-            variant="standard"
-          >
-            <OutlinedInput
-              placeholder="Search for items..."
-              sx={{
-                borderTopRightRadius: "30px",
-                borderBottomRightRadius: "30px",
-                borderTopLeftRadius: {
-                  xl: "0px",
-                  lg: "0px",
-                  md: "0px",
-                  sm: "0px",
-                  xs: "30px",
-                },
-                borderBottomLeftRadius: {
-                  xl: "0px",
-                  lg: "0px",
-                  md: "0px",
-                  sm: "0px",
-                  xs: "30px",
-                },
-                height: 40,
-                minWidth: 0,
-              }}
-              id="outlined-adornment-weight"
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton onClick={() => console.log("clicked")}>
-                    <SearchIcon color="primary" />
-                  </IconButton>
-                </InputAdornment>
-              }
-            />
-          </FormControl>
+          {/* Search Field from reusables*/}
+          <Search />
         </Grid>
         {/* Icons(wishlist, cart, account icon) */}
         <Grid
@@ -257,7 +220,8 @@ const Header = () => {
               }}
             />
           </IconButton>
-          <TemporaryDrawer />
+          {/* AppBar Drawer shown only on Tablets and Small devices */}
+          <AppBarDrawer />
         </Grid>
       </Grid>
     </Container>

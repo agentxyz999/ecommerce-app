@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Search from "../reusables/Search";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -12,60 +13,21 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import PeopleIcon from "@mui/icons-material/People";
 import CheckroomIcon from "@mui/icons-material/Checkroom";
 import IconButton from "@mui/material/IconButton";
-import SearchIcon from "@mui/icons-material/Search";
-import { FormControl, InputAdornment, OutlinedInput } from "@mui/material";
-import { grey } from "@mui/material/colors";
 
-export default function TemporaryDrawer() {
-  const [state, setState] = useState({
-    top: false,
-    left: false,
-    bottom: false,
-    right: false,
-  });
-
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
-    setState({ ...state, [anchor]: open });
-  };
+export default function AppBarDrawer() {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const list = (anchor) => (
-    <Box
-      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
-      role="presentation"
-    >
-      <IconButton
-        onClick={toggleDrawer(anchor, false)}
-        onKeyDown={toggleDrawer(anchor, false)}
-      >
+    <Box sx={{ width: 250 }} role="presentation">
+      <IconButton onClick={() => setIsDrawerOpen(false)}>
         {/*this onClick function will close the drawer */}
         <CancelIcon sx={{ color: "#d0312d", fontSize: "40px" }} />
       </IconButton>
       <List>
-        <FormControl variant="standard">
-          <OutlinedInput
-            placeholder="Search for items..."
-            sx={{
-              height: 40,
-              minWidth: 0,
-            }}
-            id="outlined-adornment-weight"
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton onClick={() => console.log("clicked")}>
-                  <SearchIcon color="primary" />
-                </IconButton>
-              </InputAdornment>
-            }
-          />
-        </FormControl>
+        <Search />
       </List>
       <Divider />
+      {/* TODO: Replace the <List>s with Navigation */}
       <List>
         {["All Categories", "Men", "Women", "Kids"].map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -97,7 +59,12 @@ export default function TemporaryDrawer() {
   return (
     <div>
       <React.Fragment>
-        <IconButton onClick={toggleDrawer("right", true)}>
+        <IconButton
+          edge="end"
+          color="inherit"
+          aria-label="navigation-toggle"
+          onClick={() => setIsDrawerOpen(true)}
+        >
           <MenuOpenIcon
             sx={{
               display: {
@@ -107,13 +74,6 @@ export default function TemporaryDrawer() {
                 sm: "block",
                 xs: "block",
               },
-              color: {
-                xl: grey[700],
-                lg: grey[700],
-                md: grey[700],
-                sm: grey[50],
-                xs: grey[50],
-              },
               "&:hover": {
                 color: "secondary.main",
               },
@@ -121,9 +81,11 @@ export default function TemporaryDrawer() {
           />
         </IconButton>
         <Drawer
-          anchor={"right"}
-          open={state["right"]}
-          onClose={toggleDrawer("right", false)}
+          anchor="right"
+          open={isDrawerOpen}
+          onClose={() => {
+            setIsDrawerOpen(false);
+          }}
         >
           {list("right")}
         </Drawer>
