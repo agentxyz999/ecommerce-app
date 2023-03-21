@@ -20,6 +20,31 @@ import IconButton from "@mui/material/IconButton";
 import { grey } from "@mui/material/colors";
 
 const Header = () => {
+  const iconStyle = {
+    "&:hover": {
+      color: {
+        xl: "primary.main",
+        lg: "primary.main",
+        md: "primary.main",
+        sm: "secondary.main",
+        xs: "secondary.main",
+      },
+    },
+    color: {
+      xl: grey[700],
+      lg: grey[700],
+      md: grey[700],
+      sm: grey[50],
+      xs: grey[50],
+    },
+  };
+  const displayProp = {
+    xl: "block",
+    lg: "block",
+    md: "block",
+    sm: "block",
+    xs: "none",
+  };
   return (
     <Container>
       <Grid
@@ -65,13 +90,7 @@ const Header = () => {
                 sm: "",
                 xs: "",
               },
-              display: {
-                xl: "block",
-                lg: "block",
-                md: "block",
-                sm: "block",
-                xs: "none",
-              },
+              display: { ...displayProp },
             }}
           >
             ShopX
@@ -102,13 +121,7 @@ const Header = () => {
           <FormControl
             sx={{
               width: 150,
-              display: {
-                xl: "block",
-                lg: "block",
-                md: "block",
-                sm: "block",
-                xs: "none",
-              },
+              display: { ...displayProp },
               alignItems: "center",
               justifyContent: "center",
             }}
@@ -152,73 +165,16 @@ const Header = () => {
         >
           <IconButton>
             <Badge badgeContent={10} color="secondary">
-              <FavoriteBorderOutlinedIcon
-                sx={{
-                  "&:hover": {
-                    color: {
-                      xl: "primary.main",
-                      lg: "primary.main",
-                      md: "primary.main",
-                      sm: "secondary.main",
-                      xs: "secondary.main",
-                    },
-                  },
-                  color: {
-                    xl: grey[700],
-                    lg: grey[700],
-                    md: grey[700],
-                    sm: grey[50],
-                    xs: grey[50],
-                  },
-                }}
-              />
+              <FavoriteBorderOutlinedIcon sx={{ ...iconStyle }} />
             </Badge>
           </IconButton>
           <IconButton>
             <Badge badgeContent={2} color="secondary">
-              <ShoppingCartOutlinedIcon
-                sx={{
-                  "&:hover": {
-                    color: {
-                      xl: "primary.main",
-                      lg: "primary.main",
-                      md: "primary.main",
-                      sm: "secondary.main",
-                      xs: "secondary.main",
-                    },
-                  },
-                  color: {
-                    xl: grey[700],
-                    lg: grey[700],
-                    md: grey[700],
-                    sm: grey[50],
-                    xs: grey[50],
-                  },
-                }}
-              />
+              <ShoppingCartOutlinedIcon sx={{ ...iconStyle }} />
             </Badge>
           </IconButton>
           <IconButton>
-            <Person2OutlinedIcon
-              sx={{
-                "&:hover": {
-                  color: {
-                    xl: "primary.main",
-                    lg: "primary.main",
-                    md: "primary.main",
-                    sm: "secondary.main",
-                    xs: "secondary.main",
-                  },
-                },
-                color: {
-                  xl: grey[700],
-                  lg: grey[700],
-                  md: grey[700],
-                  sm: grey[50],
-                  xs: grey[50],
-                },
-              }}
-            />
+            <Person2OutlinedIcon sx={{ ...iconStyle }} />
           </IconButton>
           {/* AppBar Drawer shown only on Tablets and Small devices */}
           <AppBarDrawer />
