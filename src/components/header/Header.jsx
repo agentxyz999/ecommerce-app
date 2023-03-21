@@ -39,11 +39,11 @@ const Header = () => {
     },
   };
   const displayProp = {
-    xl: "block",
-    lg: "block",
-    md: "block",
-    sm: "block",
     xs: "none",
+    sm: "block",
+    md: "block",
+    lg: "block",
+    xl: "block",
   };
   return (
     <Container>
@@ -109,11 +109,11 @@ const Header = () => {
           justifyContent="center"
           sx={{
             display: {
+              ...displayProp,
               xl: "flex",
               lg: "flex",
               md: "flex",
               sm: "none",
-              xs: "none",
             },
           }}
         >
