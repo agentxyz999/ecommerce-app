@@ -26,12 +26,15 @@ const Item = styled("div")(({ theme }) => ({
 }));
 
 const Navigation = () => {
+  const [menuIndex, setMenuIndex] = useState(-1); // to properly display the corresponding MenuItem
   const [anchorEl, setAnchorEl] = useState(null);
-  const handleOpenMenu = (e) => {
+  const handleOpenMenu = (e, index) => {
+    setMenuIndex(index);
     setAnchorEl(e.currentTarget);
   };
   const handleCloseMenu = () => {
     setAnchorEl(null);
+    setMenuIndex(-1);
   };
 
   return (
@@ -51,7 +54,12 @@ const Navigation = () => {
             return (
               <React.Fragment key={index}>
                 <Typography
-                  onClick={handleOpenMenu}
+                  // clickable only if it has submenu based on navs array from reusables
+                  onClick={
+                    items.submenu.length > 0
+                      ? (e) => handleOpenMenu(e, index)
+                      : undefined
+                  }
                   sx={{
                     display: "flex",
                     alignItems: "center",
@@ -60,17 +68,19 @@ const Navigation = () => {
                   }}
                 >
                   {items.title}
-                  <KeyboardArrowDownIcon />
+                  {items.submenu.length > 0 ? <KeyboardArrowDownIcon /> : ""}
                 </Typography>
                 <Menu
                   anchorEl={anchorEl}
                   keepMounted
-                  open={Boolean(anchorEl)}
+                  open={menuIndex !== -1}
                   onClose={handleCloseMenu}
                 >
-                  {items.submenu.map((menuItem, idx) => {
-                    return <MenuItem key={idx}>{menuItem.title}</MenuItem>;
-                  })}
+                  {/* to properly display the corresponding MenuItem */}
+                  {menuIndex !== -1 &&
+                    navs[1].midnav[menuIndex].submenu?.map((menuItem, idx) => {
+                      return <MenuItem key={idx}>{menuItem.title}</MenuItem>;
+                    })}
                 </Menu>
               </React.Fragment>
             );
