@@ -30,15 +30,14 @@ const Item = styled("div")(({ theme }) => ({
 const Navigation = () => {
   const [menuIndex, setMenuIndex] = useState(-1); // to properly display the corresponding MenuItem
   const [anchorEl, setAnchorEl] = useState(null);
-  const [categoryAnchorEl, setCategoryAnchorEl] = useState(null);
+  const [categoryAnchorEl, setCategoryAnchorEl] = useState(false);
   // Categories anchor handlers
   const handleCatOpenMenu = (e) => {
     setCategoryAnchorEl(e.currentTarget);
   };
   const handleCatCloseMenu = () => {
-    setCategoryAnchorEl(null);
+    setCategoryAnchorEl(false);
   };
-
   //midnav anchor handlers
   const handleOpenMenu = (e, index) => {
     setMenuIndex(index);
@@ -79,11 +78,15 @@ const Navigation = () => {
                 <Menu
                   anchorEl={categoryAnchorEl}
                   keepMounted
-                  open={categoryAnchorEl}
+                  open={Boolean(categoryAnchorEl)}
                   onClose={handleCatCloseMenu}
                 >
                   {item?.submenu.map((menuItem, idx) => {
-                    return <MenuItem>{menuItem.title}</MenuItem>;
+                    return (
+                      <MenuItem key={idx} onClick={handleCatCloseMenu}>
+                        {menuItem.title}
+                      </MenuItem>
+                    );
                   })}
                 </Menu>
               </React.Fragment>
@@ -121,7 +124,11 @@ const Navigation = () => {
                   {/* to properly display the corresponding MenuItem */}
                   {menuIndex !== -1 &&
                     navs[1].midnav[menuIndex].submenu?.map((menuItem, idx) => {
-                      return <MenuItem key={idx}>{menuItem.title}</MenuItem>;
+                      return (
+                        <MenuItem key={idx} onClick={handleCloseMenu}>
+                          {menuItem.title}
+                        </MenuItem>
+                      );
                     })}
                 </Menu>
               </React.Fragment>
