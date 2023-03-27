@@ -17,7 +17,7 @@ import IconButton from "@mui/material/IconButton";
 export default function AppBarDrawer() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const list = (anchor) => (
+  const list = () => (
     <Box sx={{ width: 250 }} role="presentation">
       <IconButton onClick={() => setIsDrawerOpen(false)}>
         {/*this onClick function will close the drawer */}
