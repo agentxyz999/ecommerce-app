@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 import { Container, Typography, Menu, MenuItem } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import ListIcon from "@mui/icons-material/List";
+import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import Toolbar from "@mui/material/Toolbar";
 import { navs } from "../reusables/NavMenu"; //this is an array of navigation
 
@@ -28,6 +30,16 @@ const Item = styled("div")(({ theme }) => ({
 const Navigation = () => {
   const [menuIndex, setMenuIndex] = useState(-1); // to properly display the corresponding MenuItem
   const [anchorEl, setAnchorEl] = useState(null);
+  const [categoryAnchorEl, setCategoryAnchorEl] = useState(null);
+  // Categories anchor handlers
+  const handleCatOpenMenu = (e) => {
+    setCategoryAnchorEl(e.currentTarget);
+  };
+  const handleCatCloseMenu = () => {
+    setCategoryAnchorEl(null);
+  };
+
+  //midnav anchor handlers
   const handleOpenMenu = (e, index) => {
     setMenuIndex(index);
     setAnchorEl(e.currentTarget);
@@ -47,7 +59,36 @@ const Navigation = () => {
         }}
       >
         <Item>
-          <Typography>Browse Categories</Typography>
+          {navs[0].categories?.map((item, index) => {
+            return (
+              <React.Fragment key={index}>
+                <Typography
+                  onClick={handleCatOpenMenu}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    textAlign: "center",
+                    cursor: "pointer",
+                    fontSize: 14,
+                  }}
+                >
+                  <ListIcon />
+                  {item.title}
+                  <KeyboardArrowDownIcon />
+                </Typography>
+                <Menu
+                  anchorEl={categoryAnchorEl}
+                  keepMounted
+                  open={categoryAnchorEl}
+                  onClose={handleCatCloseMenu}
+                >
+                  {item?.submenu.map((menuItem, idx) => {
+                    return <MenuItem>{menuItem.title}</MenuItem>;
+                  })}
+                </Menu>
+              </React.Fragment>
+            );
+          })}
         </Item>
         <Item>
           {navs[1].midnav?.map((items, index) => {
@@ -65,6 +106,7 @@ const Navigation = () => {
                     alignItems: "center",
                     textAlign: "center",
                     cursor: "pointer",
+                    fontSize: 14,
                   }}
                 >
                   {items.title}
@@ -87,7 +129,18 @@ const Navigation = () => {
           })}
         </Item>
         <Item>
-          <Typography>Hotline 1900-888</Typography>
+          <Typography
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              textAlign: "center",
+              cursor: "pointer",
+              fontSize: 12,
+            }}
+          >
+            <LocalPhoneIcon />
+            1900-888-0000
+          </Typography>
         </Item>
       </Container>
     </StyledToolbar>

@@ -3,7 +3,7 @@ export const navs = [
   {
     categories: [
       {
-        title: "Categories",
+        title: "Browse Categories",
         submenu: [
           { title: "Category 1" },
           { title: "Category 2" },
@@ -42,5 +42,4 @@ export const navs = [
       { title: "Contact", submenu: [] },
     ],
   },
-  { hotline: ["Category 1", "Category 2"] },
 ];
